@@ -1,0 +1,18 @@
+{
+  "slug": "auditable-data-agent",
+  "date": "2026-10-17",
+  "notebook_sha256": "0201cad2f906ab2bc100a646df67ef92a7fd6240f695d6cabff40b01ff73d99d",
+  "code_cells": 11,
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "torch": "2.14.1",
+  "sklearn": "1.9.1",
+  "inputs": {
+    "abalone.csv": "50126af5ea3554ef637579b40f120be68e26aaa1d354df1e1f0e90775f629b44"
+  },
+  "metrics": {},
+  "plots": [
+    "figure-01.png"
+  ],
+  "status": "passed"
+}
