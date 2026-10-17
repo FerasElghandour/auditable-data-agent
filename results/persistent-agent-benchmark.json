@@ -1,0 +1,58 @@
+{
+  "input_sha256": "50126af5ea3554ef637579b40f120be68e26aaa1d354df1e1f0e90775f629b44",
+  "cases": [
+    {
+      "query": "How many rows are in the dataset?",
+      "expected_tool": "query_dataset",
+      "expected_fragment": "4177",
+      "result": {
+        "tool": "query_dataset",
+        "observation": "Dataset shape: 4177 rows \u00d7 9 columns",
+        "cached": false,
+        "dataset_sha256": "50126af5ea3554ef637579b40f120be68e26aaa1d354df1e1f0e90775f629b44"
+      },
+      "passed": true
+    },
+    {
+      "query": "Calculate sqrt(16)+2^3",
+      "expected_tool": "calculate",
+      "expected_fragment": "12.0",
+      "result": {
+        "tool": "calculate",
+        "observation": "Result: 12.0",
+        "cached": false,
+        "dataset_sha256": "50126af5ea3554ef637579b40f120be68e26aaa1d354df1e1f0e90775f629b44"
+      },
+      "passed": true
+    },
+    {
+      "query": "financial advice mean rings",
+      "expected_tool": "check_scope",
+      "expected_fragment": "OUT_OF_SCOPE",
+      "result": {
+        "tool": "check_scope",
+        "observation": "OUT_OF_SCOPE",
+        "cached": false,
+        "dataset_sha256": "50126af5ea3554ef637579b40f120be68e26aaa1d354df1e1f0e90775f629b44"
+      },
+      "passed": true
+    },
+    {
+      "query": "mean rings",
+      "expected_tool": "query_dataset",
+      "expected_fragment": "9.9337",
+      "result": {
+        "tool": "query_dataset",
+        "observation": "Mean of Rings: 9.9337",
+        "cached": false,
+        "dataset_sha256": "50126af5ea3554ef637579b40f120be68e26aaa1d354df1e1f0e90775f629b44"
+      },
+      "passed": true
+    }
+  ],
+  "passed": 4,
+  "total": 4,
+  "persistent_cache_reload": true,
+  "audit_chain_valid": true,
+  "scope": "Deterministic routing/tool correctness, not language-model reasoning or answer entailment"
+}

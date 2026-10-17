@@ -8,6 +8,15 @@ A deterministic tool router with dataset statistics, correlation analysis, bound
 
 ![Implementation mechanism: Registered tools and dataset scope → Validate requested tool and arguments → Restricted arithmetic or dataframe query → Return result or guarded failure → Append event to in-memory audit list](assets/mechanism.svg)
 
+
+
+## Run the persistent data agent
+
+The reusable deterministic agent now uses full-input, dataset-scoped cache keys, persistent SQLite cache and append-only API audit records with hash-chain verification. Real4,177-row data passes the independent route/tool benchmark and restart checks.
+
+[Commands, artifacts and benchmark scope](BENCHMARKS.md) · [Versioned profiles](reproduction.json)
+
+
 ## Try a small example
 
 A small offline fixture exercises the public implementation. It demonstrates the behavior shown below; it does not replace the historical dataset, benchmark or production validation.

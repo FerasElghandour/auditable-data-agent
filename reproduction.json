@@ -1,0 +1,58 @@
+{
+  "repository": "auditable-data-agent",
+  "profiles": {
+    "checks": {
+      "scope": "Offline behavioral regressions; not a fresh dataset benchmark",
+      "commands": [
+        [
+          "{python}",
+          "smoke_test.py"
+        ],
+        [
+          "{python}",
+          "test_persistent_agent.py"
+        ]
+      ]
+    },
+    "full-notebook": {
+      "scope": "Execute retained notebook against an explicitly supplied input; preserves the original experiment protocol",
+      "required_inputs": [
+        "csv"
+      ],
+      "commands": [
+        [
+          "{python}",
+          "reproduce.py",
+          "--input",
+          "{input:csv}",
+          "--output",
+          "{output}/notebook"
+        ]
+      ]
+    },
+    "agent-benchmark": {
+      "scope": "Deterministic route/tool correctness, persistent cache and audit replay against supplied CSV",
+      "required_inputs": [
+        "csv"
+      ],
+      "commands": [
+        [
+          "{python}",
+          "benchmark.py",
+          "{input:csv}",
+          "--output",
+          "{output}/agent"
+        ]
+      ]
+    }
+  },
+  "version_packages": [
+    "numpy",
+    "torch",
+    "pandas",
+    "scikit-learn",
+    "gymnasium",
+    "pytest"
+  ],
+  "external_evidence_limits": "See BENCHMARKS.md and DATA.md. Passing contract checks does not certify historical accuracy, live providers, physical safety or business outcomes."
+}
