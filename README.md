@@ -6,14 +6,7 @@ Route natural-language data questions to explicit tools and keep the executed st
 
 A deterministic tool router with dataset statistics, correlation analysis, bounded arithmetic parsing, working memory, and an in-memory audit trail.
 
-```mermaid
-flowchart TD
-    N0["Registered tools and dataset scope"] --> N1
-    N1["Validate requested tool and arguments"] --> N2
-    N2["Restricted arithmetic or dataframe query"] --> N3
-    N3["Return result or guarded failure"] --> N4
-    N4["Append event to in-memory audit list"]
-```
+![Implementation mechanism: Registered tools and dataset scope → Validate requested tool and arguments → Restricted arithmetic or dataframe query → Return result or guarded failure → Append event to in-memory audit list](assets/mechanism.svg)
 
 ## Try a small example
 
