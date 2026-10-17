@@ -1,7 +1,5 @@
 # Auditable Data Analysis Agent
 
-**Feras Elghandour** · Technical case study
-
 Route natural-language data questions to explicit tools and keep the executed steps, cache behavior, and errors inspectable.
 
 ## Implementation
@@ -9,17 +7,42 @@ Route natural-language data questions to explicit tools and keep the executed st
 A deterministic tool router with dataset statistics, correlation analysis, bounded arithmetic parsing, working memory, and an in-memory audit trail.
 
 ```mermaid
-flowchart LR
-    A[Input preparation] --> B[Implementation]
-    B --> C[Evaluation]
-    C --> D[Results and interpretation]
+flowchart TD
+    N0["Registered tools and dataset scope"] --> N1
+    N1["Validate requested tool and arguments"] --> N2
+    N2["Restricted arithmetic or dataframe query"] --> N3
+    N3["Return result or guarded failure"] --> N4
+    N4["Append event to in-memory audit list"]
+```
+
+## Try a small example
+
+A small offline fixture exercises the public implementation. It demonstrates the behavior shown below; it does not replace the historical dataset, benchmark or production validation.
+
+After the local setup below, run from the repository root:
+
+```sh
+python examples/quickstart.py
+```
+
+The [example source](examples/quickstart.py), [captured output](examples/expected-output.txt) and [execution record](examples/environment.json) keep this demonstration inspectable. Floating-point values may vary with library versions.
+
+Observed output from this run:
+
+```text
+{
+  "fixture": "three generated abalone rows",
+  "calculation": "Result: 12.0",
+  "female_shell": "Mean Shell_weight for female: 0.3  (n=2)",
+  "blocked_expression": "Error evaluating expression: unsupported expression"
+}
 ```
 
 ## Evidence and results
 
 The release fixes the recorded shell-weight column-resolution error and replaces unrestricted expression evaluation with an allowlisted AST interpreter. Regression tests cover both failures and the supported query paths.
 
-Results described as saved come from the retained experiment record. See [VALIDATION.md](VALIDATION.md) for the checks performed on this release and their scope.
+See [VALIDATION.md](VALIDATION.md) for the release checks and their scope.
 
 ## Fresh reproduction — October 17, 2026
 
@@ -28,11 +51,6 @@ Fresh execution completed the demonstration and both column-resolution and bound
 The environment versions, input hashes, and notebook hash are recorded in [results/reproduction.json](results/reproduction.json).
 
 ![Analysis result](assets/figure-01.png)
-
-## Practical relevance
-
-This project demonstrates a deterministic tool router with dataset statistics, correlation analysis, bounded arithmetic parsing, working memory, and an in-memory audit trail.
-The implementation and evaluation make the trade-offs inspectable for technical review.
 
 ## Run locally
 
@@ -54,7 +72,3 @@ Run the focused offline behavior checks with `python smoke_test.py` after instal
 ## Limitations
 
 The router is rule-based and is not a general reasoning model. Keyword scope checks are limited and the in-memory trace is not a tamper-proof persistent audit log.
-
-## Development
-
-Changes should include a clear description of the behavior affected and verification appropriate to that behavior. Keep input data, credentials, model caches, and generated artifacts outside version control.

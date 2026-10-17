@@ -1,0 +1,1 @@
+{"fixture": "three generated abalone rows", "calculation": "Result: 12.0", "female_shell": "Mean Shell_weight for female: 0.3  (n=2)", "blocked_expression": "Error evaluating expression: unsupported expression"}
